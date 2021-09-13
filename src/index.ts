@@ -27,7 +27,7 @@ export class User {
     type: 'object',
     properties: {
       key: {type: 'string'},
-      username: {type: 'string'},
+      username: {type: 'string', minLength: 3},
       role: {type: 'string'}
     },
     required: ['key', 'username']
@@ -41,7 +41,7 @@ export class NewUser {
   static schema = {
     type: 'object',
     properties: {
-      username: {type: 'string'},
+      username: {type: 'string', minLength: 3},
       password: {type: 'string'},
       role: {type: 'string'}
     },
@@ -56,7 +56,7 @@ export class UserUpdate {
   static schema = {
     type: 'object',
     properties: {
-      username: {type: 'string'},
+      username: {type: 'string', minLength: 3},
       password: {type: 'string'},
       role: {type: 'string'}
     }
