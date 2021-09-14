@@ -70,7 +70,7 @@ export function createClient () {
 export function createServer (handlers: any) {
   return createRpcServer(handlers, {
     list: {
-      response: {type: 'object', properties: {users: {type: 'array', items: User.schema}, required: ['users']}}
+      response: {type: 'object', properties: {users: {type: 'array', items: User.schema}}, required: ['users']}
     },
     get: {
       response: User
