@@ -17,6 +17,12 @@ export interface UsersApi {
 
   // Delete a user
   delete (userKey: string): Promise<void>
+
+  // Get a user's settings
+  getSettings (userKey: string): Promise<UserSettings>
+  
+  // Get a user's settings
+  updateSettings (userKey: string, settings: UserSettingsUpdate): Promise<UserSettings>
 }
 
 export class User {
@@ -63,6 +69,26 @@ export class UserUpdate {
   }
 }
 
+export class UserSettings {
+  mainServiceId: string = ''
+  static schema = {
+    type: 'object',
+    properties: {
+      mainServiceId: {type: 'string'}
+    }
+  }
+}
+
+export class UserSettingsUpdate {
+  mainServiceId: string = ''
+  static schema = {
+    type: 'object',
+    properties: {
+      mainServiceId: {type: 'string'}
+    }
+  }
+}
+
 export function createClient () {
   return rpc<UsersApi>(ID)
 }
@@ -85,6 +111,14 @@ export function createServer (handlers: any) {
     },
     delete: {
       params: [{type: 'string'}]
+    },
+    getSettings: {
+      params: [{type: 'string'}],
+      response: UserSettings
+    },
+    updateSettings: {
+      params: [{type: 'string'}, UserSettingsUpdate],
+      response: UserSettings
     }
   })
 }
