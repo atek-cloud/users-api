@@ -32,5 +32,11 @@ interface UsersApi {
 
   // Delete a user
   delete (userKey: string): Promise<void>
+
+  // Get a user's settings
+  getSettings (userKey: string): Promise<UserSettings>
+  
+  // Get a user's settings
+  updateSettings (userKey: string, settings: UserSettingsUpdate): Promise<UserSettings>
 }
 ```
